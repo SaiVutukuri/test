@@ -1,0 +1,191 @@
+<body>
+  <div class="container">
+    <div class="title">Welcome Admin</div>
+    <div class="content">
+      <form action="#">
+        <div class="user-details">
+          <div class="input-box">
+            <span class="details">First Name: {{userFirstname}}</span>
+          </div>
+          <div class="input-box">
+            <span class="details">Last Name: {{userLastname}}</span>
+          </div>
+          <div class="input-box">
+            <span class="details">ID: {{userId}}</span>
+          </div>
+          <div class="input-box">
+            <span class="details">Email: {{userEmail}}</span>
+          </div>
+          <div class="input-box">
+            <span class="details">Role: {{userRole}}</span>
+          </div>
+          <div class="input-box">
+            <span class="details">Password: {{userPassword}}</span>
+          </div>
+        </div>
+        <hr>
+        <div class="title">All Users</div>
+        <table class="userdetails">
+          <tr>
+            <th>User ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+          </tr>
+          <tr *ngFor="let user of allUsers;">
+            <td>{{user.userId}}</td>
+            <td>{{user.firstName}}</td>
+            <td>{{user.lastName}}</td>
+            <td>{{user.email}}</td>
+          </tr>
+        </table>
+        <br>
+        <div class="title">All Admins</div>
+        <table class="userdetails">
+          <tr>
+            <th>User ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+          </tr>
+          <tr *ngFor="let admin of allAdmins;">
+            <td>{{admin.userId}}</td>
+            <td>{{admin.firstName}}</td>
+            <td>{{admin.lastName}}</td>
+            <td>{{admin.email}}</td>
+          </tr>
+        </table>
+        <hr>
+        <br>
+        <div class="title">Get Details By Id</div>
+        <div class="searchStatus" *ngIf="searchStatus">
+          User Not Found
+        </div>
+        <input id="user-password" class="form-content" type="text" name="id" [(ngModel)]="getId" />
+        &nbsp; &nbsp;
+        <input id="submit-btn" type="submit" name="submit" (click)="displayUser()" value="DISPLAY" />
+        <br>
+        <br>
+        <table class="userdetails">
+          <tr>
+            <th>User ID</th>
+            <td>{{showID}}</td>
+          </tr>
+          <tr>
+            <th>First Name</th>
+            <td>{{showFirstName}}</td>
+          </tr>
+          <tr>
+            <th>Last Name</th>
+            <td>{{showLastName}}</td>
+          </tr>
+          <tr>
+            <th>Role</th>
+            <td>{{showRole}}</td>
+          </tr>
+          <tr>
+            <th>Email</th>
+            <td>{{showEmail}}</td>
+          </tr>
+        </table>
+        <br>
+        <br>
+        <div *ngIf="showUpdateRole">
+          <div class="flex-main_container">
+            <div>
+              <div class="title">UpDate Role To Admin</div>
+              <table class="userdetails">
+                <tr>
+                  <th>User ID</th>
+                  <td>{{showID}}</td>
+                </tr>
+              </table>
+              <input id="submit-btn" *ngIf="ifAdmin" (click)="updateRoleToAdmin()" type="submit" name="submit"
+                value="UPDATE" />
+            </div>
+            <div>
+              <div class="title">UpDate Role To User</div>
+              <table class="userdetails">
+                <tr>
+                  <th>User ID</th>
+                  <td>{{showID}}</td>
+                </tr>
+              </table>
+              <input id="submit-btn" *ngIf="ifUser" (click)="updateRoleToUser()" type="submit" name="submit"
+                value="UPDATE" />
+            </div>
+            <div>
+              <div class="title">Delete Member</div>
+              <table class="userdetails">
+                <tr>
+                  <th>User ID</th>
+                  <td>{{showID}}</td>
+                </tr>
+              </table>
+              <input id="submit-btn" *ngIf="ifDelete" (click)="deleteMember()" type="submit" name="submit" value="DELETE" />
+            </div>
+          </div>
+          <br>
+          <hr>
+          <br>
+          <div class="title">All movies</div>
+          <br>
+          <table class="moviesdetails">
+            <tr>
+              <th>movies ID</th>
+              <th>movies Name</th>
+              <th>Status</th>
+            </tr>
+            <tr *ngFor="let movies of allmovies;">
+              <td>{{movies.cId}}</td>
+              <td>{{movies.movies}}</td>
+              <td>{{movies.status}}</td>
+            </tr>
+          </table>
+          <br>
+          <br>
+          <div class="moviestatus" *ngIf="moviestatus">
+            movies Not Found
+          </div>
+          <div class="flex-container">
+            <div>
+              <div class="title">Add movies</div>
+              <table class="moviesdetails">
+                <tr>
+                  <th>movies Name</th>
+                  <td><input class="form-content" type="text" name="movies" [(ngModel)]="getmovies" /></td>
+                </tr>
+                <input id="submit-btn" (click)="addmovies()" type="submit" name="submit" value="Add movies" />
+              </table>
+            </div>
+
+            <div>
+              <div class="title">Activate movies Status</div>
+              <table class="moviesdetails">
+                <tr>
+                  <th>movies ID</th>
+                  <td><input class="form-content" type="text" name="moviesID" [(ngModel)]="getmoviesId" /></td>
+                </tr>
+                <input id="submit-btn" (click)="updatemoviestatus()" type="submit" name="submit" value="Update Status" />
+              </table>
+            </div>
+
+            <div>
+              <div class="title">Delete movies</div>
+              <table class="moviesdetails">
+                <tr>
+                  <th>movies ID</th>
+                  <td><input class="form-content" type="text" name="cId" [(ngModel)]="getcId" /></td>
+                </tr>
+                <input id="submit-btn" (click)="deletemovies()" type="submit" name="submit" value="DELETE" />
+              </table>
+            </div>
+          </div>
+          <br>
+        </div>
+      </form>
+      <hr>
+      <label class="logout" (click)="homePage()">Logout</label>
+    </div>
+  </div>
+</body>

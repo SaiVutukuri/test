@@ -1,0 +1,48 @@
+<body>
+    <div class="container">
+      <div class="title">Welcome User</div>
+      <div class="content">
+        <form action="#">
+          <div class="user-details">
+            <div class="input-box">
+              <span class="details">First Name: {{userFirstname}}</span>
+            </div>
+            <div class="input-box">
+              <span class="details">Last Name: {{userLastname}}</span>
+            </div>
+            <div class="input-box">
+                <span class="details">ID: {{userId}}</span>
+              </div>
+            <div class="input-box">
+              <span class="details">Email: {{userEmail}}</span>
+            </div>
+            <div class="input-box">
+              <span class="details">Role: {{userRole}}</span>
+            </div>
+            <div class="input-box">
+              <span class="details">Password: {{userPassword}}</span>
+            </div>
+          </div>
+          <label class="user-details">Update Password:</label>
+            <input id="user-password" class="form-content" type="password" name="password" [(ngModel)]="updatepassword" autocomplete="on" required />
+            &nbsp; &nbsp; <label class="updateButton" (click)="updatePassword()">Update</label>
+        </form>
+        <br>
+        <hr>
+        <br>
+        <div class="title">All Movies</div>
+        <br>
+        <table class="moviesdetails">
+          <tr>
+            <th>Movie Name</th>
+          </tr>
+          <tr *ngFor="let movies of allmovies;">
+            <td>{{movies.movies}}</td>
+          </tr>
+        </table>
+        <br>
+        <br>
+        <label type="button" class="logout" (click)="homePage()">Logout</label>
+      </div>
+    </div>
+  </body>

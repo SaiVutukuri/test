@@ -18,3 +18,7 @@ CREATE TABLE userdatabase.MOVIES (
   `status` varchar(45),
   PRIMARY KEY (`id`)
 );
+
+for frontend
+npm install
+npm start
